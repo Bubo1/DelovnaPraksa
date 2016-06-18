@@ -1,4 +1,4 @@
-package com.iwm.employee;
+package com.iwm.api.employee;
 
 import org.axonframework.common.Assert;
 import org.axonframework.domain.IdentifierFactory;

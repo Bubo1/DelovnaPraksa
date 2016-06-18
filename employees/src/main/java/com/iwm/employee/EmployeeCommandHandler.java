@@ -1,23 +1,18 @@
-package com.iwm.employees;
+package com.iwm.employee;
 
-import com.iwm.employee.CreateEmployeeCommand;
-import com.iwm.employee.EmployeeId;
-import com.iwm.query.employees.repositories.EmployeeQueryRepository;
+import com.iwm.api.employee.CreateEmployeeCommand;
+import com.iwm.api.employee.EmployeeId;
 import org.axonframework.commandhandling.annotation.CommandHandler;
 import org.axonframework.repository.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * Created by Bubo on 6/16/2016.
  */
-@Component
 public class EmployeeCommandHandler {
 
     private Repository<Employee> repository;
-
-    private EmployeeQueryRepository employeeQueryRepository;
 
     @CommandHandler
     public EmployeeId handleCreateEmployee(CreateEmployeeCommand command) {
@@ -32,14 +27,9 @@ public class EmployeeCommandHandler {
     }
 
     @Autowired
-    @Qualifier("userRepository")
+    @Qualifier("employeeRepository")
     public void setRepository(Repository<Employee> userRepository) {
         this.repository = userRepository;
-    }
-
-    @Autowired
-    public void setUserRepository(EmployeeQueryRepository userRepository) {
-        this.employeeQueryRepository = userRepository;
     }
 
 }

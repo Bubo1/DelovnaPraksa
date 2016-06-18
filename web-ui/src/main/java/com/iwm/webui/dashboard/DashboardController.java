@@ -1,6 +1,6 @@
-package com.iwm.dashboard;
+package com.iwm.webui.dashboard;
 
-import com.iwm.query.employees.repositories.EmployeeQueryRepository;
+import com.iwm.query.employee.repositories.EmployeeQueryRepository;
 import org.axonframework.commandhandling.CommandBus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

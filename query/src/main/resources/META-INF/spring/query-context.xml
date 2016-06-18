@@ -7,8 +7,9 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-    <beans profile="mongodb">
-        <mongo:repositories base-package="com.iwm.query.employees.repositories"
+
+    <beans>
+        <mongo:repositories base-package="com.iwm.*.repositories"
                             mongo-template-ref="mongoSpringTemplate"/>
     </beans>
 

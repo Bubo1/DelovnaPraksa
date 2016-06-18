@@ -6,7 +6,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
 
-    <beans profile="mongodb">
+    <beans>
         <bean id="mongoSpringTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
             <constructor-arg name="mongo" ref="mongo"/>
             <constructor-arg name="databaseName" value="axontrader"/>

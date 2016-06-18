@@ -1,7 +1,7 @@
-package com.iwm.employees;
+package com.iwm.employee;
 
-import com.iwm.employee.EmployeeCreatedEvent;
-import com.iwm.employee.EmployeeId;
+import com.iwm.api.employee.EmployeeCreatedEvent;
+import com.iwm.api.employee.EmployeeId;
 import org.axonframework.eventhandling.annotation.EventHandler;
 import org.axonframework.eventsourcing.annotation.AbstractAnnotatedAggregateRoot;
 import org.axonframework.eventsourcing.annotation.AggregateIdentifier;

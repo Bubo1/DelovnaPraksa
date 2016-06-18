@@ -1,14 +1,14 @@
-package com.iwm.employee;
+package com.iwm.api.employee;
 
 /**
  * Created by Bubo on 6/16/2016.
  */
-public class CreateEmployeeCommand {
+public class EmployeeCreatedEvent {
 
     private EmployeeId employeeId;
     private String name;
 
-    public CreateEmployeeCommand(EmployeeId employeeId, String name) {
+    public EmployeeCreatedEvent(EmployeeId employeeId, String name) {
         this.employeeId = employeeId;
         this.name = name;
     }

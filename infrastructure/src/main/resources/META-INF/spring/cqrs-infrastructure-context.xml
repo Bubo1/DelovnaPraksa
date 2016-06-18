@@ -39,7 +39,7 @@
         <!--<bean id="sagaSqlSchema" class="org.axonframework.saga.repository.jdbc.HsqlSagaSqlSchema"/>-->
     <!--</beans>-->
 
-    <beans profile="mongodb">
+    <beans>
         <bean id="eventStore" class="org.axonframework.eventstore.mongo.MongoEventStore">
             <constructor-arg ref="mongoTemplate"/>
         </bean>
