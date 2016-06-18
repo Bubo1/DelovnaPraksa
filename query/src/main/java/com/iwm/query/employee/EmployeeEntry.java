@@ -1,12 +1,14 @@
-package com.iwm.query.employees;
+package com.iwm.query.employee;
 
 import org.springframework.data.annotation.Id;
 
+import javax.persistence.Entity;
 import java.io.Serializable;
 
 /**
  * Created by Bubo on 6/16/2016.
  */
+@Entity
 public class EmployeeEntry implements Serializable {
 
     @Id
@@ -29,4 +31,6 @@ public class EmployeeEntry implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
+
+
 }

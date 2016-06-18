@@ -1,15 +1,14 @@
-package com.iwm.query.employees.repositories;
+package com.iwm.query.employee.repositories;
 
-import com.iwm.query.employees.EmployeeEntry;
+import com.iwm.query.employee.EmployeeEntry;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 /**
  * Created by Bubo on 6/16/2016.
  */
-
 public interface EmployeeQueryRepository extends PagingAndSortingRepository<EmployeeEntry, String> {
 
-    EmployeeEntry findByUsername(String username);
+    EmployeeEntry findByName(String name);
 
     EmployeeEntry findByIdentifier(String identifier);
 

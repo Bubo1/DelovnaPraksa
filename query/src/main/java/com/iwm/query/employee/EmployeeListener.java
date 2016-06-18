@@ -1,7 +1,7 @@
-package com.iwm.query.employees;
+package com.iwm.query.employee;
 
-import com.iwm.employee.EmployeeCreatedEvent;
-import com.iwm.query.employees.repositories.EmployeeQueryRepository;
+import com.iwm.api.employee.EmployeeCreatedEvent;
+import com.iwm.query.employee.repositories.EmployeeQueryRepository;
 import org.axonframework.eventhandling.annotation.EventHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class EmployeeListener {
 
-    private EmployeeQueryRepository employeeRepository;
+    private EmployeeQueryRepository employeeQueryRepository;
 
     @EventHandler
     public void handleUserCreated(EmployeeCreatedEvent event) {
@@ -20,12 +20,12 @@ public class EmployeeListener {
         employeeEntry.setIdentifier(event.getEmployeeId().toString());
         employeeEntry.setName(event.getName());
 
-        employeeRepository.save(employeeEntry);
+        employeeQueryRepository.save(employeeEntry);
     }
 
     @Autowired
-    public void setEmployeeRepository(EmployeeQueryRepository employeeRepository) {
-        this.employeeRepository = employeeRepository;
+    public void setEmployeeRepository(EmployeeQueryRepository employeeQueryRepository) {
+        this.employeeQueryRepository = employeeQueryRepository;
     }
 
 }
