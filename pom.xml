@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.iwm</groupId>
+    <artifactId>delovna-praksa</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <axon.version>2.4.4</axon.version>
+        <slf4j.version>1.7.21</slf4j.version>
+        <log4j.version>1.2.17</log4j.version>
+
+        <spring.version>4.2.6.RELEASE</spring.version>
+        <spring.security.version>4.1.0.RELEASE</spring.security.version>
+
+        <javax.validation.version>1.1.0.Final</javax.validation.version>
+        <mongodb.java.version>3.2.2</mongodb.java.version>
+        <springdata.mongodb.version>1.9.2.RELEASE</springdata.mongodb.version>
+        <springdata.jpa.version>1.10.2.RELEASE</springdata.jpa.version>
+
+        <hibernate.em.version>5.1.0.Final</hibernate.em.version>
+        <hibernate.javax.version>1.0.0.Final</hibernate.javax.version>
+
+        <maven.compiler.plugin>3.5.1</maven.compiler.plugin>
+        <maven.enforcer.plugin>1.4.1</maven.enforcer.plugin>
+        <maven.version.range>3.0.0</maven.version.range>
+
+        <aspectj.version>1.8.9</aspectj.version>
+
+        <java.version>1.7</java.version>
+        <maven.tomcat7.version>2.2</maven.tomcat7.version>
+
+    </properties>
+
+    <modules>
+        <module>employees</module>
+        <!--<module>employement</module>-->
+        <module>core-api</module>
+        <module>employees-query</module>
+        <module>web-ui</module>
+        <module>infrastructure</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-framework-bom</artifactId>
+                <version>${spring.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-core</artifactId>
+                <version>${spring.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>commons-logging</artifactId>
+                        <groupId>commons-logging</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>javax.transaction</groupId>
+            <artifactId>jta</artifactId>
+            <version>1.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>${slf4j.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jul-to-slf4j</artifactId>
+            <version>${slf4j.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4j.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+
+
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${log4j.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compiler.plugin}</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <!--<plugin>-->
+                <!--<groupId>org.codehaus.mojo</groupId>-->
+                <!--<artifactId>buildnumber-maven-plugin</artifactId>-->
+                <!--<version>1.2</version>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<phase>validate</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>create</goal>-->
+                        <!--</goals>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+                <!--<configuration>-->
+                    <!--<doCheck>false</doCheck>-->
+                    <!--<doUpdate>false</doUpdate>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-enforcer-plugin</artifactId>-->
+                <!--<version>${maven.enforcer.plugin}</version>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<id>enforce-banned-dependencies</id>-->
+                        <!--<goals>-->
+                            <!--<goal>enforce</goal>-->
+                        <!--</goals>-->
+                        <!--<configuration>-->
+                            <!--<rules>-->
+                                <!--<bannedDependencies>-->
+                                    <!--<searchTransitive>true</searchTransitive>-->
+                                    <!--<excludes>-->
+                                        <!--<exclude>javassist:javassist</exclude>-->
+                                        <!--<exclude>commons-logging</exclude>-->
+                                        <!--<exclude>hsqldb:hsqldb</exclude>-->
+                                        <!--<exclude>org.slf4j:1.5*</exclude>-->
+                                        <!--<exclude>org.springframework:2.*</exclude>-->
+                                        <!--<exclude>org.springframework:3.0.*</exclude>-->
+                                    <!--</excludes>-->
+                                <!--</bannedDependencies>-->
+                                <!--<requireMavenVersion>-->
+                                    <!--<version>${maven.version.range}</version>-->
+                                <!--</requireMavenVersion>-->
+                                <!--<requireJavaVersion>-->
+                                    <!--<version>${java.version}</version>-->
+                                <!--</requireJavaVersion>-->
+                            <!--</rules>-->
+                            <!--<fail>true</fail>-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>${maven.tomcat7.version}</version>
+                <configuration>
+                    <port>8181</port>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+
+</project>
