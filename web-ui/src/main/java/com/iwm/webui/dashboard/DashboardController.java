@@ -30,7 +30,7 @@ public class DashboardController {
         this.commandBus = commandBus;
     }
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(value = "", method = RequestMethod.GET)
     public String get(Model model) {
         model.addAttribute("employees", employeeQueryRepository.findAll());
         return "dashboard/index";

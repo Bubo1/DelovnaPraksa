@@ -26,7 +26,7 @@
         <spring.security.version>4.1.0.RELEASE</spring.security.version>
 
         <javax.validation.version>1.1.0.Final</javax.validation.version>
-        <mongodb.java.version>3.2.2</mongodb.java.version>
+        <mongodb.java.version>2.14.2</mongodb.java.version>
         <springdata.mongodb.version>1.9.2.RELEASE</springdata.mongodb.version>
         <springdata.jpa.version>1.10.2.RELEASE</springdata.jpa.version>
         <xstream.version>1.4.3</xstream.version>

@@ -9,12 +9,12 @@
     <beans>
         <bean id="mongoSpringTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
             <constructor-arg name="mongo" ref="mongo"/>
-            <constructor-arg name="databaseName" value="axontrader"/>
+            <constructor-arg name="databaseName" value="delovnapraksa"/>
         </bean>
 
         <bean id="mongoTemplate" class="org.axonframework.eventstore.mongo.DefaultMongoTemplate">
             <constructor-arg index="0" ref="mongo"/>
-            <constructor-arg index="1" value="axontrader"/>
+            <constructor-arg index="1" value="delovnapraksa"/>
             <constructor-arg index="2" value="domainevents"/>
             <constructor-arg index="3" value="snapshotevents"/>
             <constructor-arg index="4">
@@ -27,7 +27,7 @@
 
         <bean id="mongoSagaTemplate" class="org.axonframework.saga.repository.mongo.DefaultMongoTemplate">
             <constructor-arg index="0" ref="mongo"/>
-            <constructor-arg index="1" value="axontrader"/>
+            <constructor-arg index="1" value="delovnapraksa"/>
             <constructor-arg index="2" value="snapshotevents"/>
             <constructor-arg index="3">
                 <null/>

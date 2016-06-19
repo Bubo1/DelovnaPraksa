@@ -9,7 +9,7 @@
 
 
     <beans>
-        <mongo:repositories base-package="com.iwm.*.repositories"
+        <mongo:repositories base-package="com.iwm.query.*.repositories"
                             mongo-template-ref="mongoSpringTemplate"/>
     </beans>
 
