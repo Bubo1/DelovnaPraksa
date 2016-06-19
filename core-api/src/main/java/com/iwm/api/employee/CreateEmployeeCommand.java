@@ -1,10 +1,13 @@
 package com.iwm.api.employee;
 
+import org.axonframework.commandhandling.annotation.TargetAggregateIdentifier;
+
 /**
  * Created by Bubo on 6/16/2016.
  */
 public class CreateEmployeeCommand {
 
+    @TargetAggregateIdentifier
     private EmployeeId employeeId;
     private String name;
 

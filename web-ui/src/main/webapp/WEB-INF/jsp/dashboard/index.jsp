@@ -13,7 +13,7 @@
         </c:forEach>
     </ul>
     <form action="create-employee" method="post" class="form-control form">
-        <input type="text" name="Name" id="name">
+        <input type="text" name="name" id="name">
         <button type="submit">Submit</button>
     </form>
 </body>

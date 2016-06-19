@@ -41,8 +41,9 @@ public class DashboardController {
     }
 
     @RequestMapping(value = "create-employee", method = RequestMethod.POST)
-    public String createEmployee(@RequestParam(value = "name", required = false) String name, Model model) {
+    public String createEmployee(@RequestParam String name, Model model) {
         EmployeeId employeeId = new EmployeeId();
+        logger.debug(name);
         CreateEmployeeCommand command = new CreateEmployeeCommand(employeeId, name);
         commandBus.dispatch(new GenericCommandMessage<>(command));
         return employeeId.toString();

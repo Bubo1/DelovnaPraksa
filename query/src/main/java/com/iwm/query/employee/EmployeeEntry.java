@@ -14,6 +14,7 @@ public class EmployeeEntry implements Serializable {
     @Id
     @javax.persistence.Id
     private String identifier;
+
     private String name;
 
     public String getIdentifier() {
