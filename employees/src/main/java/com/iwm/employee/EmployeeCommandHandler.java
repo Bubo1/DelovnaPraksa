@@ -15,11 +15,9 @@ public class EmployeeCommandHandler {
     private Repository<Employee> repository;
 
     @CommandHandler
-    public EmployeeId handleCreateEmployee(CreateEmployeeCommand command) {
-        EmployeeId employeeId = command.getEmployeeId();
-        Employee employee = new Employee(employeeId, command.getName());
+    public void handleCreateEmployee(CreateEmployeeCommand command) {
+        Employee employee = new Employee(command.getEmployeeId(), command.getName());
         repository.add(employee);
-        return employeeId;
     }
 
     private Employee onEmployee(String employeeId) {
