@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * Created by Bubo on 6/16/2016.
  */
 @Controller
-@RequestMapping("/")
+@RequestMapping("/dashboard")
 public class DashboardController {
 
     private final static Logger logger = LoggerFactory.getLogger(DashboardController.class);
@@ -30,10 +30,9 @@ public class DashboardController {
         this.commandBus = commandBus;
     }
 
-    @RequestMapping(value = "", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public String get(Model model) {
         model.addAttribute("employees", employeeQueryRepository.findAll());
-        return "dashboard/index";
+        return "dashboard/dashboard";
     }
-
 }

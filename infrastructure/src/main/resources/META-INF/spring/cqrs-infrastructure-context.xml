@@ -8,14 +8,11 @@
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <axon:annotation-config/>
-    <context:component-scan base-package="com.iwm"/>
+    <!--<context:component-scan base-package="com.iwm"/>-->
 
     <axon:event-bus id="eventBus"/>
 
     <axon:command-bus id="commandBus">
-        <axon:dispatchInterceptors>
-            <bean class="org.axonframework.commandhandling.interceptors.BeanValidationInterceptor"/>
-        </axon:dispatchInterceptors>
     </axon:command-bus>
 
     <bean id="snapshotter" class="org.axonframework.eventsourcing.SpringAggregateSnapshotter">
