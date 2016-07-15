@@ -36,5 +36,15 @@
     <input type="text" name="ssn">
     <button type="submit">Submit</button>
 </form>
+
+<p>Employment</p>
+<form action="create-employment" method="post">
+    <input type="date" name="startDate">
+    <input type="date" name="endDate">
+    <c:forEach var="employee" items="${employees}">
+        <input type="radio" name="employeeId" value="${employee.identifier}">${employee.name} <br>
+    </c:forEach>
+    <button type="submit">Submit</button>
+</form>
 </body>
 </html>

@@ -1,8 +1,9 @@
 package com.iwm.employment;
 
+import com.iwm.api.employee.EmployeeId;
 import com.iwm.api.employment.EmploymentCreatedEvent;
 import com.iwm.api.employment.EmploymentId;
-import com.iwm.api.employee.EmployeeId;
+import org.axonframework.eventhandling.annotation.EventHandler;
 import org.axonframework.eventsourcing.annotation.AbstractAnnotatedAggregateRoot;
 import org.axonframework.eventsourcing.annotation.AggregateIdentifier;
 
@@ -23,6 +24,11 @@ public class Employment extends AbstractAnnotatedAggregateRoot {
 
     public Employment(EmploymentId employmentId, EmployeeId employeeId, Date createdDate, Date startDate, Date endDate) {
         apply(new EmploymentCreatedEvent(employmentId, employeeId, createdDate, startDate, endDate));
+    }
+
+    @EventHandler
+    public void onEmployeeCreated(EmploymentCreatedEvent event) {
+        this.employmentId = event.getEmploymentId();
     }
 
     @Override
