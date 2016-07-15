@@ -11,6 +11,7 @@
             classpath:META-INF/spring/persistence-infrastructure-context.xml,
             classpath:META-INF/spring/query-context.xml,
             classpath:META-INF/spring/employee-context.xml,
+            classpath:META-INF/spring/employment-context.xml,
             classpath:META-INF/spring/configuration-context.xml,
             classpath:META-INF/spring/security-context.xml
         </param-value>

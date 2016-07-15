@@ -1,7 +1,6 @@
 package com.iwm.employee;
 
-import com.iwm.api.employee.CreateEmployeeCommand;
-import com.iwm.api.employee.EmployeeId;
+import com.iwm.api.employee.*;
 import org.axonframework.commandhandling.annotation.CommandHandler;
 import org.axonframework.repository.Repository;
 import org.slf4j.Logger;
@@ -20,9 +19,22 @@ public class EmployeeCommandHandler {
 
     @CommandHandler
     public void handleCreateEmployee(CreateEmployeeCommand command) {
-        logger.debug(command.getName() + " " + command.getEmployeeId().toString());
         Employee employee = new Employee(command.getEmployeeId(), command.getName());
         repository.add(employee);
+    }
+
+    @CommandHandler
+    public void handleCreateEmployee(CreateEmployeeMKCommand command) {
+        Employee employee = new Employee(command.getEmployeeId(), command.getName());
+        repository.add(employee);
+        employee.createEmployeeEntryMK(command.getEmployeeId(), command.getName(), command.getEmbg());
+    }
+
+    @CommandHandler
+    public void handleCreateEmployee(CreateEmployeeUSCommand command) {
+        Employee employee = new Employee(command.getEmployeeId(), command.getName());
+        repository.add(employee);
+        employee.createEmployeeEntryUS(command.getEmployeeId(), command.getName(), command.getSsn());
     }
 
     private Employee onEmployee(String employeeId) {

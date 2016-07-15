@@ -53,6 +53,11 @@
             <artifactId>infrastructure</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.iwm</groupId>
+            <artifactId>employment</artifactId>
+            <version>${project.version}</version>
+        </dependency>
 
         <!-- spring dependencies -->
         <dependency>

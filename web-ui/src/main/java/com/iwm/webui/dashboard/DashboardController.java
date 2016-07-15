@@ -1,6 +1,7 @@
 package com.iwm.webui.dashboard;
 
-import com.iwm.api.employee.CreateEmployeeCommand;
+import com.iwm.api.employee.CreateEmployeeMKCommand;
+import com.iwm.api.employee.CreateEmployeeUSCommand;
 import com.iwm.api.employee.EmployeeId;
 import com.iwm.query.employee.repositories.EmployeeQueryRepository;
 import org.axonframework.commandhandling.CommandBus;
@@ -40,11 +41,20 @@ public class DashboardController {
         return "dashboard/index";
     }
 
-    @RequestMapping(value = "create-employee", method = RequestMethod.POST)
-    public String createEmployee(@RequestParam String name, Model model) {
+    @RequestMapping(value = "create-employee-mk", method = RequestMethod.POST)
+    public String createEmployeeMK(@RequestParam String name, @RequestParam String embg, Model model) {
         EmployeeId employeeId = new EmployeeId();
         logger.debug(name);
-        CreateEmployeeCommand command = new CreateEmployeeCommand(employeeId, name);
+        CreateEmployeeMKCommand command = new CreateEmployeeMKCommand(employeeId, name, embg);
+        commandBus.dispatch(new GenericCommandMessage<>(command));
+        return employeeId.toString();
+    }
+
+    @RequestMapping(value = "create-employee-us", method = RequestMethod.POST)
+    public String createEmployeeUS(@RequestParam String name, @RequestParam String ssn, Model model) {
+        EmployeeId employeeId = new EmployeeId();
+        logger.debug(name);
+        CreateEmployeeUSCommand command = new CreateEmployeeUSCommand(employeeId, name, ssn);
         commandBus.dispatch(new GenericCommandMessage<>(command));
         return employeeId.toString();
     }

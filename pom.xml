@@ -55,6 +55,7 @@
         <module>query</module>
         <module>employees</module>
         <module>web-ui</module>
+        <module>employment</module>
     </modules>
 
     <dependencyManagement>

@@ -2,6 +2,8 @@ package com.iwm.employee;
 
 import com.iwm.api.employee.EmployeeCreatedEvent;
 import com.iwm.api.employee.EmployeeId;
+import com.iwm.api.employee.EmployeeMKCreatedEvent;
+import com.iwm.api.employee.EmployeeUSCreatedEvent;
 import org.axonframework.eventhandling.annotation.EventHandler;
 import org.axonframework.eventsourcing.annotation.AbstractAnnotatedAggregateRoot;
 import org.axonframework.eventsourcing.annotation.AggregateIdentifier;
@@ -21,6 +23,14 @@ public class Employee extends AbstractAnnotatedAggregateRoot {
 
     public Employee(EmployeeId employeeId, String name) {
         apply(new EmployeeCreatedEvent(employeeId, name));
+    }
+
+    public void createEmployeeEntryMK(EmployeeId employeeId, String name, String embg) {
+        apply(new EmployeeMKCreatedEvent(employeeId, name, embg));
+    }
+
+    public void createEmployeeEntryUS(EmployeeId employeeId, String name, String ssn) {
+        apply(new EmployeeUSCreatedEvent(employeeId, name, ssn));
     }
 
     @EventHandler
