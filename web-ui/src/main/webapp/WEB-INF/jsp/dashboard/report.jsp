@@ -12,12 +12,25 @@
     <title>Title</title>
 </head>
 <body>
-    <c:forEach var="employment" items="${employmentList}">
-        <p>${employment.identifier}</p>
-        <p>${employment.employee.name}</p>
-        <p>${employment.createdDate}</p>
-        <p>${employment.startDate}</p>
-        <p>${employment.endDate}</p>
-    </c:forEach>
+    <table border="1">
+        <tr>
+            <th>Employment ID</th>
+            <th>Employee Name</th>
+            <th>??</th>
+            <th>Created Date</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+        </tr>
+        <c:forEach var="employment" items="${employmentList}">
+            <tr>
+                <td>${employment.identifier}</td>
+                <td>${employment.employee.name}</td>
+                <td><c:catch var="exception">${employment.employee.embg}</c:catch> <c:catch var="exception">${employment.employee.ssn}</c:catch></td>
+                <td>${employment.createdDate}</td>
+                <td>${employment.startDate}</td>
+                <td>${employment.endDate}</td>
+            </tr>
+        </c:forEach>
+    </table>
 </body>
 </html>
