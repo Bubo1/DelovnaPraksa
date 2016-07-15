@@ -6,6 +6,7 @@ import com.iwm.api.employee.EmployeeId;
 import com.iwm.api.employment.CreateEmploymentCommand;
 import com.iwm.api.employment.EmploymentId;
 import com.iwm.query.employee.repositories.EmployeeQueryRepository;
+import com.iwm.query.employment.EmploymentEntry;
 import com.iwm.query.employment.repositories.EmploymentQueryRepository;
 import org.axonframework.commandhandling.CommandBus;
 import org.axonframework.commandhandling.GenericCommandMessage;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Bubo on 6/16/2016.
@@ -74,5 +76,12 @@ public class DashboardController {
         EmploymentId employmentId = new EmploymentId();
         CreateEmploymentCommand command = new CreateEmploymentCommand(employmentId, new EmployeeId(employeeId), new Date(), startDate, endDate);
         commandBus.dispatch(new GenericCommandMessage<>(command));
+    }
+
+    @RequestMapping(value = "report", method = RequestMethod.GET)
+    public String report(Model model) {
+        List<EmploymentEntry> employmentEntryList = employmentQueryRepository.findAll();
+        model.addAttribute("employmentList", employmentEntryList);
+        return "dashboard/report";
     }
 }

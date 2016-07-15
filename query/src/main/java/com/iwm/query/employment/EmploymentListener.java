@@ -1,6 +1,7 @@
 package com.iwm.query.employment;
 
 import com.iwm.api.employment.EmploymentCreatedEvent;
+import com.iwm.query.employee.repositories.EmployeeQueryRepository;
 import com.iwm.query.employment.repositories.EmploymentQueryRepository;
 import org.axonframework.eventhandling.annotation.EventHandler;
 import org.slf4j.Logger;
@@ -18,10 +19,14 @@ public class EmploymentListener {
 
     private EmploymentQueryRepository employmentQueryRepository;
 
+    private EmployeeQueryRepository employeeQueryRepository;
+
     @EventHandler
     public void handleEmploymentCreated(EmploymentCreatedEvent event) {
         EmploymentEntry employmentEntry = new EmploymentEntry();
-        employmentEntry.setEmployeeId(event.getEmployeeId());
+
+        employmentEntry.setEmployee(employeeQueryRepository.findByIdentifier(event.getEmployeeId().toString()));
+
         employmentEntry.setCreatedDate(event.getCreatedDate());
         employmentEntry.setStartDate(event.getStartDate());
         employmentEntry.setEndDate(event.getEndDate());
@@ -34,6 +39,11 @@ public class EmploymentListener {
     @Autowired
     public void setEmploymentRepository(EmploymentQueryRepository employmentQueryRepository) {
         this.employmentQueryRepository = employmentQueryRepository;
+    }
+
+    @Autowired
+    public void setEmployeeRepository(EmployeeQueryRepository employeeQueryRepository) {
+        this.employeeQueryRepository = employeeQueryRepository;
     }
 
 }

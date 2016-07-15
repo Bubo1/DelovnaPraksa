@@ -1,9 +1,10 @@
 package com.iwm.query.employment;
 
-import com.iwm.api.employee.EmployeeId;
+import com.iwm.query.employee.EmployeeEntry;
 import org.springframework.data.annotation.Id;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -17,7 +18,8 @@ public class EmploymentEntry implements Serializable {
     @javax.persistence.Id
     private String identifier;
 
-    private EmployeeId employeeId;
+    @OneToOne
+    private EmployeeEntry employee;
 
     private Date createdDate;
     private Date startDate;
@@ -31,12 +33,12 @@ public class EmploymentEntry implements Serializable {
         this.identifier = identifier;
     }
 
-    public EmployeeId getEmployeeId() {
-        return employeeId;
+    public EmployeeEntry getEmployee() {
+        return employee;
     }
 
-    public void setEmployeeId(EmployeeId employeeId) {
-        this.employeeId = employeeId;
+    public void setEmployee(EmployeeEntry employee) {
+        this.employee = employee;
     }
 
     public Date getCreatedDate() {
